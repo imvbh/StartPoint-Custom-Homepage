@@ -34,16 +34,24 @@ function SearchBar({ onSearchActive }) {
     if (!query) return;
   
     try {
-      const response = await fetch(`https://cors-anywhere.herokuapp.com/http://suggestqueries.google.com/complete/search?client=firefox&q=${query}`);
+      const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${query}`);
+      
+      // Check if the response is ok (status in the range 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // Try parsing the response as JSON
       const data = await response.json();
   
+      // The response is an array where the second element contains the suggestions
       setSuggestions(data[1] || []);
     } catch (error) {
       console.error("Error fetching suggestions:", error);
+      // Optionally, you can clear suggestions on error
+      setSuggestions([]);
     }
   };
-  
-  
   
 
   const handleChange = (e) => {
