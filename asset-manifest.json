@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/StartPoint-Custom-Homepage/static/css/main.f39003fd.css",
+    "main.js": "/StartPoint-Custom-Homepage/static/js/main.baf21671.js",
+    "static/js/453.c93d055c.chunk.js": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js",
+    "index.html": "/StartPoint-Custom-Homepage/index.html",
+    "main.f39003fd.css.map": "/StartPoint-Custom-Homepage/static/css/main.f39003fd.css.map",
+    "main.baf21671.js.map": "/StartPoint-Custom-Homepage/static/js/main.baf21671.js.map",
+    "453.c93d055c.chunk.js.map": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f39003fd.css",
+    "static/js/main.baf21671.js"
+  ]
+}
