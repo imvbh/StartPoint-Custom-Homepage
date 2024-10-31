@@ -9,18 +9,6 @@ function SearchBar({ onSearchActive }) {
   const [suggestions, setSuggestions] = useState([]);
   const inputRef = useRef(null);
 
-  // Mock suggestion data for demonstration
-  const mockSuggestions = [
-    "JavaScript tutorials",
-    "React basics",
-    "Frontend development",
-    "How to use Git",
-    "Web development tips",
-    "CSS styling guides",
-    "APIs in JavaScript",
-    "React hooks",
-  ];
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
