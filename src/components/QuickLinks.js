@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './QuickLinks.css';
+import { BiEdit, BiSolidTrashAlt } from "react-icons/bi";
 
 const QuickLinks = () => {
   const [links, setLinks] = useState(() => {
-    // Load links from localStorage or return an empty array if none exist
     const savedLinks = localStorage.getItem('quickLinks');
     return savedLinks ? JSON.parse(savedLinks) : [];
   });
   const [newLink, setNewLink] = useState({ name: '', url: '' });
   const [editingIndex, setEditingIndex] = useState(null);
-  const [isAddingLink, setIsAddingLink] = useState(false); // New state for showing/hiding input fields
+  const [isAddingLink, setIsAddingLink] = useState(false);
 
   useEffect(() => {
-    // Save links to localStorage whenever they change
     localStorage.setItem('quickLinks', JSON.stringify(links));
   }, [links]);
 
@@ -20,7 +19,7 @@ const QuickLinks = () => {
     if (newLink.name && newLink.url) {
       setLinks([...links, newLink]);
       setNewLink({ name: '', url: '' });
-      setIsAddingLink(false); // Hide the input fields after adding
+      setIsAddingLink(false);
     }
   };
 
@@ -31,7 +30,7 @@ const QuickLinks = () => {
   const handleEditLink = (index) => {
     setEditingIndex(index);
     setNewLink(links[index]);
-    setIsAddingLink(true); // Show input fields when editing
+    setIsAddingLink(true);
   };
 
   const handleUpdateLink = () => {
@@ -40,38 +39,72 @@ const QuickLinks = () => {
     setLinks(updatedLinks);
     setNewLink({ name: '', url: '' });
     setEditingIndex(null);
-    setIsAddingLink(false); // Hide the input fields after updating
+    setIsAddingLink(false);
   };
 
+  const handleLinkClick = (e, url) => {
+    e.preventDefault(); // Prevent the default link action
+
+    const linkElement = e.currentTarget; // Capture the reference to `currentTarget`
+    linkElement.classList.add('clicked'); // Add the animation class
+  
+    // Open the link in a new tab after a delay
+    setTimeout(() => {
+      window.open(url, '_blank'); // Open the URL in a new tab
+      linkElement.classList.remove('clicked'); // Clean up the animation class
+    }, 1000); // Adjust this duration to match your animation timing
+  };
+  
   return (
     <section className="quick-links">
       <div className="links-container">
         {links.map((link, index) => (
-          <div key={index} className="link-card">
-            <div className='card-info'>
-            <img
-              src={`https://www.google.com/s2/favicons?sz=32&domain=${link.url}`}
-              alt={`${link.name} logo`}
-              className="favicon"
-            />
-            <div className="link-details">
-              <strong>{link.name}</strong>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.url}
-              </a>
+          <a
+            key={index}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-card"
+            onClick={(e) => handleLinkClick(e, link.url)}
+          >
+            <div className="card-info">
+              <img
+                src={`https://www.google.com/s2/favicons?sz=32&domain=${link.url}`}
+                alt={`${link.name} logo`}
+                className="favicon"
+              />
+              <div className="link-details">
+                <strong>{link.name}</strong>
+              </div>
+              <div className="link-actions">
+                <button
+                  className="edit-button"
+                  onClick={(e) => { 
+                    e.stopPropagation(); // Stop the click event from propagating to the link
+                    handleEditLink(index); 
+                  }}
+                >
+                  <BiEdit />
+                </button>
+                <button
+                  className="delete-button"
+                  onClick={(e) => { 
+                    e.stopPropagation(); // Stop the click event from propagating to the link
+                    handleDeleteLink(index); 
+                  }}
+                >
+                  <BiSolidTrashAlt />
+                </button>
+              </div>
             </div>
-            <div className="link-actions">
-              <button onClick={() => handleEditLink(index)}>Edit</button>
-              <button onClick={() => handleDeleteLink(index)}>Delete</button>
-            </div>
-          </div></div>
+          </a>
         ))}
         <button className="add-link-button" onClick={() => setIsAddingLink(!isAddingLink)}>
-          {isAddingLink ? '-' : '+'} {/* Toggle button label */}
+          {isAddingLink ? '-' : '+'}
         </button>
       </div>
-
-      {isAddingLink && ( // Conditionally render the input fields
+  
+      {isAddingLink && (
         <div className="add-link">
           <input
             type="text"
@@ -93,7 +126,7 @@ const QuickLinks = () => {
         </div>
       )}
     </section>
-  );
+  );  
 };
 
 export default QuickLinks;

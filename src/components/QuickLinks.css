@@ -1,8 +1,9 @@
 .quick-links {
+  align-items: center;
   padding: 1rem;
   background-color: #1f1f1f;
   border-radius: 8px;
-  max-width: 80vw;
+  max-width: 70vw;
   margin: 20px auto;
 }
 
@@ -12,6 +13,7 @@ h2 {
 }
 
 .links-container {
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -19,123 +21,100 @@ h2 {
 
 .link-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  --background: linear-gradient(to right, #74ebd5 0%, #acb6e5 100%);
-  border: 1px solid #ddd;
-  min-width: 150px;
-  border-radius: 5px;
-  padding: 3px;
-  background: #74ebd5;
-  background: var(--background);
-  position: relative; /* Make the card relative */
-  transition: box-shadow 1s;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  background-color: #292b2c;
+  padding: 10px;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  color: #ccc;
+  text-decoration: none;
+  text-align: center;
   z-index: 1;
 }
 
-.link-card::before,
-.link-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  z-index: -1;
-}
-
-.link-card::before {
-  background: linear-gradient(to bottom right, #f6d365 0%, #fda085 100%);
-  transform: rotate(2deg);
-}
-
-.link-card::after {
-  background: linear-gradient(to top right, #84fab0 0%, #8fd3f4 100%);
-  transform: rotate(-2deg);
-}
-
-.card-info {
-  --color: #292b2c;
-  background: var(--color);
-  color: var(--color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 15px;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  border-radius: 0.7rem;
-  position: relative;
-  z-index: 2;
-}
-
 .link-card:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid #00796b;
 }
 
-.favicon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+.link-card .favicon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
 }
+
+.link-card .link-title {
+  font-size: 0.9em;
+  color: #ccc;
+  margin: 0;
+}
+
+.link-card a {
+  display: none;
+  color: #74ebd5;
+  text-decoration: underline;
+  font-size: 0.85em;
+}
+
 
 .link-details {
-  flex-grow: 1;
-  color: #ccc;
-}
-
-.link-details a {
-  color: grey;
-  text-decoration: none;
-  font-size: 0.9em;
-  display: block;
-}
-
-
-.link-card:hover::before,
-.link-card:hover::after {
-  opacity: 0;
-}
-
-.link-card:hover .link-card-info {
-  color: #74ebd5;
-  transition: color 5s;
-}
-
-
-.link-details a:hover {
-  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .link-actions {
   position: absolute;
-  bottom: 50px;
-  right: 15px;
+  bottom: 10px;
+  right: 10px;
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
 
+.edit-button {
+  position: relative;
+  bottom: 70px;
+  left:55px;
+  font-size: 1rem;
+}
+
+.delete-button {
+  position: relative;
+  top: 30px;
+  left:20px;
+}
+
+.add-link-button {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 .link-card:hover .link-actions {
-  opacity: 1; /* Show actions on hover */
+  opacity: 1;
 }
 
 .link-actions button {
-  background-color: #f44336;
-  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid #00796b;
+  background-color: #292b2c;
   color: #fff;
   padding: 5px 8px;
   cursor: pointer;
-  border-radius: 3px;
-  margin-left: 5px; /* Add margin for spacing between buttons */
-}
-
-.link-actions button:nth-child(1) {
-  background-color: #ffa726; /* Different color for the first button */
+  border-radius: 50%;
+  margin-left: 5px;
 }
 
 .add-link {
+  justify-content: center;
+  max-width: 50vw;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -143,6 +122,7 @@ h2 {
 }
 
 .add-link input {
+  text-align: center;
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -161,4 +141,30 @@ h2 {
 
 .add-link button:hover {
   background-color: #45a049;
+}
+
+/* QuickLinks.css */
+
+.splash-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #ccc; /* Adjust color as needed */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  animation: splash 0.5s ease-in forwards;
+}
+
+@keyframes splash {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  to {
+    width: 3000px;
+    height: 3000px;
+    opacity: 1;
+  }
 }
