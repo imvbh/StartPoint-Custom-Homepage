@@ -11,24 +11,54 @@
 
 
 .main {
+  position: relative; /* Set the container as relative to position text elements within it */
   transition: all 0.5s;
   -webkit-text-stroke: 2px #d6f4f4;
-  font-variation-settings: "wght" 900, "ital" 1;
+  font-variation-settings: "wght" 700, "ital" 1;
   font-size: 5rem;
   text-align: center;
   color: transparent;
   font-family: "Chakra Petch", sans-serif;
-  text-shadow: 3px 3px 0px #c3c5c6,
-    6px 6px 0px #b2b0b2,
-    9px 9px 0px #9a9899,
-    12px 12px 0px #646464,
-    24px 24px 10px #1a1a1a;
-  cursor: pointer;
+  height: 5rem; /* Ensures the container height stays consistent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.main:hover {
-  font-variation-settings: "wght" 100, "ital" 0;
-  text-shadow: none;
+.main .text1,
+.main .text2 {
+  position: absolute; /* Position elements on top of each other */
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.main .text1 {
+  color: #ccc;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.main .text2 {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Prevents any interaction when hidden */
+}
+
+.main:hover .text1 {
+  opacity: 0;
+}
+
+.main:hover .text2 {
+  opacity: 1;
+}
+
+.main p {
+  margin: 0;
+  padding: 0;
+}
+
+.main .bold {
+  color: #ccc;
 }
 
 * {

@@ -73,11 +73,12 @@ function App() {
         </h1>
       </header>
       <main>
-      <div className="main">StartPage</div>
-        <SearchBar onSearchActive={handleSearchActive} />{" "}
-        {/* Pass the callback */}
-        {!searchActive && <QuickLinks />}{" "}
-        {/* Conditionally render QuickLinks */}
+        <div className="main">
+          <div className="text1">Sttp://</div>
+          <div className="text2"><p><span className="bold">St</span>ar<span className="bold">tp</span>age://</p></div>
+        </div>
+        <SearchBar onSearchActive={handleSearchActive} />
+        {!searchActive && <QuickLinks />}
       </main>
     </div>
   );
