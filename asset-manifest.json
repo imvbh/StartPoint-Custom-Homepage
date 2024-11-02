@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/StartPoint-Custom-Homepage/static/css/main.cf832c7b.css",
-    "main.js": "/StartPoint-Custom-Homepage/static/js/main.ed1fd4af.js",
+    "main.css": "/StartPoint-Custom-Homepage/static/css/main.acfd1e01.css",
+    "main.js": "/StartPoint-Custom-Homepage/static/js/main.bd752cc6.js",
     "static/js/453.c93d055c.chunk.js": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js",
     "index.html": "/StartPoint-Custom-Homepage/index.html",
-    "main.cf832c7b.css.map": "/StartPoint-Custom-Homepage/static/css/main.cf832c7b.css.map",
-    "main.ed1fd4af.js.map": "/StartPoint-Custom-Homepage/static/js/main.ed1fd4af.js.map",
+    "main.acfd1e01.css.map": "/StartPoint-Custom-Homepage/static/css/main.acfd1e01.css.map",
+    "main.bd752cc6.js.map": "/StartPoint-Custom-Homepage/static/js/main.bd752cc6.js.map",
     "453.c93d055c.chunk.js.map": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf832c7b.css",
-    "static/js/main.ed1fd4af.js"
+    "static/css/main.acfd1e01.css",
+    "static/js/main.bd752cc6.js"
   ]
 }
