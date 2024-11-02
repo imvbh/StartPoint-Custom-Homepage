@@ -308,9 +308,6 @@ section {
   .date{
     font-size: 0.8rem;
   }
-  .input-group {
-    width: 60%;
-  }
 
   .input-group input {
     font-size: 2rem;
@@ -327,6 +324,9 @@ section {
   }
   .date {
     font-size: 0.75rem;
+  }
+  .input-group {
+    width: 60%;
   }
 
   .input-group input {
