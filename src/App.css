@@ -9,6 +9,10 @@
   font-weight: normal;
 }
 
+.app {
+  justify-content: space-between;
+}
+
 
 .main {
   position: relative; /* Set the container as relative to position text elements within it */
@@ -95,6 +99,8 @@ header {
   display: flex;
   justify-content: space-between;
   color: #4a4a4a;
+  width: 350px;
+  margin-right: 5rem;
 }
 
 .greeting h1 {
@@ -257,7 +263,9 @@ section {
 /* Styles for suggestion dropdown */
 .suggestion-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  background-color: #1f1f1f;
   gap: 10px;
   position: absolute;
   top: calc(100% + 10px); /* Position below the input field */
@@ -267,7 +275,7 @@ section {
   border-radius: 8px;
   padding: 10px;
   margin: 0;
-  z-index: 0;
+  z-index: 5;
   list-style-type: none;
   overflow: hidden;
 }
@@ -285,4 +293,43 @@ section {
 .suggestion-list li:hover {
   background-color: #00796b;
   color: white;
+}
+
+
+
+/* Media query for screens 1200px and below */
+@media (max-width: 1227px) {
+  header {
+    font-size: 80%; /* Adjust width for larger tablets or smaller desktops */
+  }
+  .time {
+    font-size: 3rem;
+  }
+  .date{
+    font-size: 0.8rem;
+  }
+  .input-group {
+    width: 60%;
+  }
+
+  .input-group input {
+    font-size: 2rem;
+  }
+}
+
+/* Media query for screens 950px and below */
+@media (max-width: 957px) {
+  header {
+    font-size: 80%; /* Adjust width for larger tablets or smaller desktops */
+  }
+  .time {
+    font-size: 2.5rem;
+  }
+  .date {
+    font-size: 0.75rem;
+  }
+
+  .input-group input {
+    font-size: 1.5rem;
+  }
 }

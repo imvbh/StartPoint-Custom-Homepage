@@ -34,8 +34,9 @@ function SearchBar({ onSearchActive }) {
     if (!query) return;
   
     try {
-      const response = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&q=${query}`);
-      
+      // Fetch suggestions from DuckDuckGo API
+      const response = await fetch(`https://api.duckduckgo.com/?q=${query}&format=json&no_redirect=1&no_html=1&skip_disambig=1`);
+  
       // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -44,14 +45,21 @@ function SearchBar({ onSearchActive }) {
       // Try parsing the response as JSON
       const data = await response.json();
   
-      // The response is an array where the second element contains the suggestions
-      setSuggestions(data[1] || []);
+      // Extract suggestions from the API response
+      const suggestions = data.RelatedTopics
+        .filter(topic => topic.Text && topic.ResultType === "search") // Filter only suggestions
+        .map(topic => topic.Text) || [];
+      
+      // Set suggestions state
+      setSuggestions(suggestions);
     } catch (error) {
       console.error("Error fetching suggestions:", error);
       // Optionally, you can clear suggestions on error
       setSuggestions([]);
     }
   };
+  
+  
   
 
   const handleChange = (e) => {

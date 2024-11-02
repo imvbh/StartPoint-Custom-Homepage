@@ -49,7 +49,7 @@ const QuickLinks = () => {
     setTimeout(() => {
       window.open(url, "_blank");
       linkElement.classList.remove("clicked");
-    }, 1000);
+    });
   };
 
   return (
