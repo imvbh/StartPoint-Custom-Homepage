@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import QuickLinks from "./components/QuickLinks";
@@ -11,49 +10,69 @@ function App() {
   const [name, setName] = useState(localStorage.getItem("username") || "User");
   const [isEditing, setIsEditing] = useState(false);
   const [greeting, setGreeting] = useState("");
-  const [time, setTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+  );
+  const [date, setDate] = useState(
+    new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      weekday: "long",
+    })
+  );
+  const [backgroundClass, setBackgroundClass] = useState("morning");
+
   const [searchActive, setSearchActive] = useState(false); // New state to track search activity
 
-  // Update greeting based on the time of day
   useEffect(() => {
     const hours = new Date().getHours();
-    if (hours < 12) {
+  
+    if (hours >= 6 && hours < 10) {
+      setBackgroundClass("morning");
       setGreeting("Good Morning");
-    } else if (hours < 18) {
+    } else if (hours >= 10 && hours < 16) {
+      setBackgroundClass("afternoon");
       setGreeting("Good Afternoon");
+    } else if (hours >= 16 && hours < 19) {
+      setBackgroundClass("evening");
+      setGreeting("Good Evening");
     } else {
+      setBackgroundClass("night");
       setGreeting("Good Evening");
     }
   }, []);
+  
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      setTime(
+        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      );
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  // Save name to localStorage when changed
   useEffect(() => {
     localStorage.setItem("username", name);
   }, [name]);
 
-  // Toggle editing mode and handle name changes
   const handleNameClick = () => setIsEditing(true);
   const handleNameChange = (e) => setName(e.target.value);
   const handleNameBlur = () => setIsEditing(false);
 
-  // Callback function to set search active state
-  const handleSearchActive = (active) => {
+   // Callback function to set search active state
+   const handleSearchActive = (active) => {
     setSearchActive(active);
   };
 
   return (
-    <div className="app">
+    <div className={`app ${backgroundClass}`}>
       <header className="greeting">
         <h1 id="greeting-text">
           <div className="time">{time}</div>
+          <div className="date">{date}</div>
           {greeting},{" "}
           {isEditing ? (
             <input
@@ -75,10 +94,15 @@ function App() {
       <main>
         <div className="main">
           <div className="text1">Sttp://</div>
-          <div className="text2"><p><span className="bold">St</span>ar<span className="bold">tp</span>age://</p></div>
+          <div className="text2">
+            <p>
+              <span className="bold">St</span>ar<span className="bold">tp</span>
+              age://
+            </p>
+          </div>
         </div>
         <SearchBar onSearchActive={handleSearchActive} />
-        {!searchActive && <QuickLinks />}
+        <QuickLinks />
       </main>
     </div>
   );
