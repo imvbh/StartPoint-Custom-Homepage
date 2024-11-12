@@ -97,7 +97,7 @@ function App() {
           <div className="text2">
             <p>
               <span className="bold">St</span>ar<span className="bold">tp</span>
-              age://
+              oint://
             </p>
           </div>
         </div>
