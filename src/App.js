@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     const hours = new Date().getHours();
 
-    if (hours >= 6 && hours < 10) {
+    if (hours >= 6 && hours < 12) {
       setBackgroundClass("morning");
       setGreeting("Good Morning");
     } else if (hours >= 12 && hours < 16) {
