@@ -27,11 +27,11 @@ function App() {
 
   useEffect(() => {
     const hours = new Date().getHours();
-  
+
     if (hours >= 6 && hours < 10) {
       setBackgroundClass("morning");
       setGreeting("Good Morning");
-    } else if (hours >= 10 && hours < 16) {
+    } else if (hours >= 12 && hours < 16) {
       setBackgroundClass("afternoon");
       setGreeting("Good Afternoon");
     } else if (hours >= 16 && hours < 19) {
@@ -42,12 +42,14 @@ function App() {
       setGreeting("Good Evening");
     }
   }, []);
-  
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(
-        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+        new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
       );
     }, 1000);
 
@@ -62,8 +64,8 @@ function App() {
   const handleNameChange = (e) => setName(e.target.value);
   const handleNameBlur = () => setIsEditing(false);
 
-   // Callback function to set search active state
-   const handleSearchActive = (active) => {
+  // Callback function to set search active state
+  const handleSearchActive = (active) => {
     setSearchActive(active);
   };
 
