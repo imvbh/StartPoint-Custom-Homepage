@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/StartPoint-Custom-Homepage/static/css/main.33625620.css",
-    "main.js": "/StartPoint-Custom-Homepage/static/js/main.df8a598f.js",
+    "main.js": "/StartPoint-Custom-Homepage/static/js/main.3ac485e5.js",
     "static/js/453.c93d055c.chunk.js": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js",
     "index.html": "/StartPoint-Custom-Homepage/index.html",
     "main.33625620.css.map": "/StartPoint-Custom-Homepage/static/css/main.33625620.css.map",
-    "main.df8a598f.js.map": "/StartPoint-Custom-Homepage/static/js/main.df8a598f.js.map",
+    "main.3ac485e5.js.map": "/StartPoint-Custom-Homepage/static/js/main.3ac485e5.js.map",
     "453.c93d055c.chunk.js.map": "/StartPoint-Custom-Homepage/static/js/453.c93d055c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.33625620.css",
-    "static/js/main.df8a598f.js"
+    "static/js/main.3ac485e5.js"
   ]
 }
